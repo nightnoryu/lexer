@@ -131,12 +131,16 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 			default:
 				if (IsIdentifierStart(currentChar))
 				{
-					token.lexeme = ParseIdentifier(line, i);
-					token.type = DetermineIdentifierType(token.lexeme);
-					break;
+					std::tie(token.type, token.lexeme) = ParseIdentifier(line, i);
 				}
-
-				token.type = TokenType::ERROR;
+				else if (IsNumberStart(currentChar))
+				{
+					std::tie(token.type, token.lexeme) = ParseNumber(line, i);
+				}
+				else
+				{
+					token.type = TokenType::ERROR;
+				}
 				break;
 			}
 
@@ -178,6 +182,17 @@ std::string Lexer::ParseStringLiteral(std::string const& line, std::size_t& i)
 	return result;
 }
 
+bool Lexer::IsNumberStart(char value)
+{
+	return std::isdigit(value);
+}
+
+std::tuple<TokenType, std::string> Lexer::ParseNumber(std::string const& line, size_t& i)
+{
+	std::string lexeme;
+	return {};
+}
+
 bool Lexer::IsIdentifierStart(char value)
 {
 	return value == '_' || std::isalpha(value);
@@ -188,7 +203,7 @@ bool Lexer::IsIdentifierSymbol(char value)
 	return value == '_' || std::isalnum(value);
 }
 
-std::string Lexer::ParseIdentifier(std::string const& line, size_t& i)
+std::tuple<TokenType, std::string> Lexer::ParseIdentifier(std::string const& line, size_t& i)
 {
 	std::string result;
 	result += line.at(i);
@@ -211,16 +226,16 @@ std::string Lexer::ParseIdentifier(std::string const& line, size_t& i)
 		--i;
 	}
 
-	return result;
-}
-
-TokenType Lexer::DetermineIdentifierType(std::string const& lexeme)
-{
-	auto const type = RESERVED_WORDS.find(lexeme);
+	TokenType tokenType;
+	auto const type = RESERVED_WORDS.find(result);
 	if (type == RESERVED_WORDS.end())
 	{
-		return TokenType::IDENTIFIER;
+		tokenType = TokenType::IDENTIFIER;
+	}
+	else
+	{
+		tokenType = type->second;
 	}
 
-	return type->second;
+	return std::make_tuple(tokenType, result);
 }
