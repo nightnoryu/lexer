@@ -10,4 +10,6 @@ add_executable(${PROJECT_NAME}
         src/Lexer.cpp
         src/Lexer.h
         src/TokensPrinter.cpp
-        src/TokensPrinter.h)
+        src/TokensPrinter.h
+        src/Args.cpp
+        src/Args.h)
