@@ -58,8 +58,18 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "IF";
 	case TokenType::ELSE:
 		return "ELSE";
+	case TokenType::OPENING_PARENTHESIS:
+		return "OPENING_PARENTHESIS";
+	case TokenType::CLOSING_PARENTHESIS:
+		return "CLOSING_PARENTHESIS";
+	case TokenType::OPENING_BRACE:
+		return "OPENING_BRACE";
+	case TokenType::CLOSING_BRACE:
+		return "CLOSING_BRACE";
 	case TokenType::EQUAL:
 		return "EQUAL";
+	case TokenType::NOT_EQUAL:
+		return "NOT_EQUAL";
 	case TokenType::LESS:
 		return "LESS";
 	case TokenType::GREATER:

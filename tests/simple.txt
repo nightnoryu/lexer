@@ -1,1 +1,6 @@
-++-*+9
+a1 = 'suck on these';
+a2 = ' boobz';
+
+if (a1 != a2) {
+  result = a1 + a2
+}

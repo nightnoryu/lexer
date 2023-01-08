@@ -12,17 +12,16 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 		std::size_t i = 0;
 		while (i < line.length())
 		{
-			auto columnNumber = i + 1;
-
-			auto currentValue = line.at(i);
-			auto previousValue = i > 0 ? line.at(i - 1) : currentValue;
-			auto nextValue = i < line.length() - 1 ? line.at(i + 1) : currentValue;
+			auto currentChar = line.at(i);
+			auto nextChar = i < line.length() - 1
+				? line.at(i + 1)
+				: currentChar;
 
 			Token token;
 			token.lineNumber = lineNumber;
 			token.columnNumber = i + 1;
 
-			switch (currentValue)
+			switch (currentChar)
 			{
 			case ' ':
 				token.type = TokenType::BLANK;
@@ -58,8 +57,26 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.lexeme = "+";
 				break;
 
+			case '(':
+				token.type = TokenType::OPENING_PARENTHESIS;
+				token.lexeme = "(";
+				break;
+			case ')':
+				token.type = TokenType::CLOSING_PARENTHESIS;
+				token.lexeme = ")";
+				break;
+
+			case '{':
+				token.type = TokenType::OPENING_BRACE;
+				token.lexeme = "{";
+				break;
+			case '}':
+				token.type = TokenType::CLOSING_BRACE;
+				token.lexeme = "}";
+				break;
+
 			case '=':
-				if (nextValue == '=')
+				if (nextChar == '=')
 				{
 					token.type = TokenType::EQUAL;
 					token.lexeme = "==";
@@ -71,9 +88,48 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 					token.lexeme = "=";
 				}
 				break;
+			case '!':
+				if (nextChar == '=')
+				{
+					token.type = TokenType::NOT_EQUAL;
+					token.lexeme = "!=";
+					++i;
+				}
+				else
+				{
+					token.type = TokenType::ERROR;
+				}
+				break;
+
+			case '<':
+				if (nextChar == '=')
+				{
+					token.type = TokenType::LESS_OR_EQUAL;
+					token.lexeme = "<=";
+					++i;
+				}
+				else
+				{
+					token.type = TokenType::LESS;
+					token.lexeme = "<";
+				}
+				break;
+			case '>':
+				if (nextChar == '=')
+				{
+					token.type = TokenType::GREATER_OR_EQUAL;
+					token.lexeme = ">=";
+					++i;
+				}
+				else
+				{
+					token.type = TokenType::GREATER;
+					token.lexeme = ">";
+				}
+				break;
 
 			default:
-				if (IsIdentifierStart(currentValue))
+				if (IsIdentifierStart(currentChar))
 				{
 					token.lexeme = ParseIdentifier(line, i);
 					token.type = DetermineIdentifierType(token.lexeme);
