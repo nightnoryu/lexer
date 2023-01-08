@@ -31,6 +31,10 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.type = TokenType::COMMENT;
 				token.lexeme = "#";
 				break;
+			case ';':
+				token.type = TokenType::SEPARATOR;
+				token.lexeme = ";";
+				break;
 
 			case '\'':
 				token.type = TokenType::STRING_LITERAL;
@@ -69,6 +73,13 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				break;
 
 			default:
+				if (IsIdentifierStart(currentValue))
+				{
+					token.lexeme = ParseIdentifier(line, i);
+					token.type = DetermineIdentifierType(token.lexeme);
+					break;
+				}
+
 				token.type = TokenType::ERROR;
 				break;
 			}
@@ -107,7 +118,53 @@ std::string Lexer::ParseStringLiteral(std::string const& line, std::size_t& i)
 	}
 
 	result += '\'';
-	++i;
 
 	return result;
+}
+
+bool Lexer::IsIdentifierStart(char value)
+{
+	return value == '_' || std::isalpha(value);
+}
+
+bool Lexer::IsIdentifierSymbol(char value)
+{
+	return value == '_' || std::isalnum(value);
+}
+
+std::string Lexer::ParseIdentifier(std::string const& line, size_t& i)
+{
+	std::string result;
+	result += line.at(i);
+	auto ch = line.at(++i);
+
+	while (IsIdentifierSymbol(ch))
+	{
+		result += ch;
+		++i;
+		if (i == line.length())
+		{
+			break;
+		}
+
+		ch = line.at(i);
+	}
+
+	if (i != line.length())
+	{
+		--i;
+	}
+
+	return result;
+}
+
+TokenType Lexer::DetermineIdentifierType(std::string const& lexeme)
+{
+	auto const type = RESERVED_WORDS.find(lexeme);
+	if (type == RESERVED_WORDS.end())
+	{
+		return TokenType::IDENTIFIER;
+	}
+
+	return type->second;
 }

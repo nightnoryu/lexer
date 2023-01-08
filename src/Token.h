@@ -4,9 +4,9 @@
 
 enum class TokenType
 {
-	START,
 	BLANK,
 	COMMENT,
+	SEPARATOR,
 
 	ASSIGNMENT,
 	IDENTIFIER,
