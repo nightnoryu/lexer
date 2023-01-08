@@ -35,7 +35,7 @@ enum class TokenType
 struct Token
 {
 	TokenType type;
-	std::string str;
+	std::string lexeme;
 	std::size_t lineNumber;
 	std::size_t columnNumber;
 };

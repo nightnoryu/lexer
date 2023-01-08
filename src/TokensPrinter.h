@@ -8,4 +8,7 @@ class TokensPrinter
 {
 public:
 	static void Print(std::ostream& output, std::vector<Token> const& tokens);
+
+private:
+	static std::string TokenTypeToString(TokenType type);
 };

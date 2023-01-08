@@ -19,49 +19,33 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 			auto nextValue = i < line.length() - 1 ? line.at(i + 1) : currentValue;
 
 			Token token;
+			token.lineNumber = lineNumber;
+			token.columnNumber = i + 1;
 
 			switch (currentValue)
 			{
 			case '+':
-				token = {
-					.type = TokenType::ADDITION,
-					.str = "+",
-					.lineNumber = lineNumber,
-					.columnNumber = i + 1,
-				};
+				token.type = TokenType::ADDITION;
+				token.lexeme = "+";
 				++i;
 				break;
 			case '-':
-				token = {
-					.type = TokenType::SUBTRACTION,
-					.str = "-",
-					.lineNumber = lineNumber,
-					.columnNumber = i + 1,
-				};
+				token.type = TokenType::SUBTRACTION,
+				token.lexeme = "-",
 				++i;
 				break;
 			case '*':
-				token = {
-					.type = TokenType::MULTIPLICATION,
-					.str = "*",
-					.lineNumber = lineNumber,
-					.columnNumber = i + 1,
-				};
+				token.type = TokenType::MULTIPLICATION,
+				token.lexeme = "*",
 				++i;
 				break;
 			case '/':
-				token = {
-					.type = TokenType::DIVISION,
-					.str = "+",
-					.lineNumber = lineNumber,
-					.columnNumber = i + 1,
-				};
+				token.type = TokenType::DIVISION,
+				token.lexeme = "+",
 				++i;
 				break;
 			default:
-				token = {
-					.type = TokenType::ERROR,
-				};
+				token.type = TokenType::ERROR;
 				++i;
 				break;
 			}
