@@ -5,4 +5,9 @@ project(lexer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
-        main.cpp)
+        main.cpp
+        src/Token.h
+        src/Lexer.cpp
+        src/Lexer.h
+        src/TokensPrinter.cpp
+        src/TokensPrinter.h)
