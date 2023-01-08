@@ -36,6 +36,6 @@ struct Token
 {
 	TokenType type;
 	std::string str;
-	int lineNumber;
-	int position;
+	std::size_t lineNumber;
+	std::size_t columnNumber;
 };

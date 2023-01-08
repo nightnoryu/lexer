@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Token.h"
+#include <iostream>
 #include <vector>
 
 class Lexer

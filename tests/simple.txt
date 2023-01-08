@@ -1,9 +1,1 @@
-a := 2;
-b := (a + 3) * 8;
-a = b;
-
-if a > b
-  print(a)
-else
-  print(b)
-end;
+++-*+9
