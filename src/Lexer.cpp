@@ -189,8 +189,27 @@ bool Lexer::IsNumberStart(char value)
 
 std::tuple<TokenType, std::string> Lexer::ParseNumber(std::string const& line, size_t& i)
 {
-	std::string lexeme;
-	return {};
+	std::string result;
+	auto ch = line.at(i);
+
+	while (std::isdigit(ch))
+	{
+		result += ch;
+		++i;
+		if (i == line.length())
+		{
+			break;
+		}
+
+		ch = line.at(i);
+	}
+
+	if (i != line.length())
+	{
+		--i;
+	}
+
+	return { TokenType::INTEGER_NUMBER, result };
 }
 
 bool Lexer::IsIdentifierStart(char value)
@@ -206,8 +225,7 @@ bool Lexer::IsIdentifierSymbol(char value)
 std::tuple<TokenType, std::string> Lexer::ParseIdentifier(std::string const& line, size_t& i)
 {
 	std::string result;
-	result += line.at(i);
-	auto ch = line.at(++i);
+	auto ch = line.at(i);
 
 	while (IsIdentifierSymbol(ch))
 	{
