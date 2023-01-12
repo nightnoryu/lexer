@@ -27,9 +27,6 @@ private:
 
 	static std::string ParseStringLiteral(std::string const& line, std::size_t& i);
 
-	static bool IsNumberStart(char value);
-	static std::tuple<TokenType, std::string> ParseNumber(std::string const& line, std::size_t& i);
-
 	static bool IsIdentifierStart(char value);
 	static bool IsIdentifierSymbol(char value);
 	static std::tuple<TokenType, std::string> ParseIdentifier(std::string const& line, std::size_t& i);

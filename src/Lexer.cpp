@@ -1,4 +1,5 @@
 #include "Lexer.h"
+#include "NumberParser.h"
 
 std::vector<Token> Lexer::Parse(std::istream& input)
 {
@@ -137,9 +138,9 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				{
 					std::tie(token.type, token.lexeme) = ParseIdentifier(line, i);
 				}
-				else if (IsNumberStart(currentChar))
+				else if (NumberParser::IsNumberStart(currentChar))
 				{
-					std::tie(token.type, token.lexeme) = ParseNumber(line, i);
+					std::tie(token.type, token.lexeme) = NumberParser::Parse(line, i);
 				}
 				else
 				{
@@ -184,36 +185,6 @@ std::string Lexer::ParseStringLiteral(std::string const& line, std::size_t& i)
 	result += '\'';
 
 	return result;
-}
-
-bool Lexer::IsNumberStart(char value)
-{
-	return std::isdigit(value);
-}
-
-std::tuple<TokenType, std::string> Lexer::ParseNumber(std::string const& line, size_t& i)
-{
-	std::string result;
-	auto ch = line.at(i);
-
-	while (std::isdigit(ch))
-	{
-		result += ch;
-		++i;
-		if (i == line.length())
-		{
-			break;
-		}
-
-		ch = line.at(i);
-	}
-
-	if (i != line.length())
-	{
-		--i;
-	}
-
-	return { TokenType::INTEGER_NUMBER, result };
 }
 
 bool Lexer::IsIdentifierStart(char value)

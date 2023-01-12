@@ -11,7 +11,7 @@ void TokensPrinter::Print(std::ostream& output, std::vector<Token> const& tokens
 
 		if (token.type == TokenType::ERROR)
 		{
-			output << "Error: unknown lexeme (" << token.lexeme << ")";
+			output << "Error: invalid lexeme (" << token.lexeme << ")";
 		}
 		else
 		{

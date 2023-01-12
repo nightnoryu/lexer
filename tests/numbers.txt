@@ -1,0 +1,10 @@
+int a = 2345;
+double pi = 3.14;
+double whatever = 1.0;
+double withLeadingZero = 0.123;
+
+int b = 0127;
+int c = 0b0101101;
+int d = 0xFEEDBEEFA123;
+
+int zero = 0;
