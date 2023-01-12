@@ -1,0 +1,13 @@
+string a1 = 'suck on these';
+string a2 = ' boobz';
+
+if (a1 != a2) {
+  result = a1 + a2;
+}
+
+int a1 = 23;
+double a2 = 1;
+
+double input;
+read(input);
+print(input * 2);
