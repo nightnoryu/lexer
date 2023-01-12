@@ -1,0 +1,9 @@
+int invalidInteger = 123i12;
+double invalidDouble = 1.234w1;
+
+int invalidHex = 0x12AT;
+int invalidBinary = 0x101201;
+int invalidOctal = 012821;
+
+int notFullHex = 0x;
+int notFullBinary = 0b;
