@@ -12,8 +12,10 @@ public:
 
 private:
 	static std::string ReadNumber(std::string const& line, std::size_t& i);
-
 	static TokenType ParseNumber(std::string const& number);
+
+	static TokenType ParseInteger(std::string const& number);
+	static TokenType ParseReal(std::string const& number);
 
 	static TokenType ParseHex(std::string const& number);
 	static TokenType ParseBinary(std::string const& number);

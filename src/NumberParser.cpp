@@ -58,16 +58,50 @@ TokenType NumberParser::ParseNumber(std::string const& number)
 			return ParseHex(leftover);
 		case 'b':
 			return ParseBinary(leftover);
+		case '.':
+			return ParseReal(leftover);
 		default:
 			return ParseOctal(leftover);
 		}
 	}
 	else
 	{
-		// TODO: doubles
-		return TokenType::INTEGER_NUMBER;
+		return ParseInteger(number.substr(i));
 	}
 }
+
+TokenType NumberParser::ParseInteger(std::string const& number)
+{
+	for (std::size_t i = 0; i < number.length(); ++i)
+	{
+		auto& ch = number.at(i);
+		if (!std::isdigit(ch))
+		{
+			if (ch == '.')
+			{
+				return ParseReal(number.substr(i + 1));
+			}
+
+			return TokenType::ERROR;
+		}
+	}
+
+	return TokenType::INTEGER_NUMBER;
+}
+
+TokenType NumberParser::ParseReal(std::string const& number)
+{
+	for (auto&& ch : number)
+	{
+		if (!std::isdigit(ch))
+		{
+			return TokenType::ERROR;
+		}
+	}
+
+	return TokenType::REAL_NUMBER;
+}
+
 TokenType NumberParser::ParseHex(std::string const& number)
 {
 	if (number.length() == 0)
@@ -106,13 +140,15 @@ TokenType NumberParser::ParseBinary(std::string const& number)
 
 TokenType NumberParser::ParseOctal(std::string const& number)
 {
-	for (auto&& ch : number)
+	for (std::size_t i = 0; i < number.length(); ++i)
 	{
+		auto& ch = number.at(i);
+
 		if (!IsOctalDigit(ch))
 		{
 			if (ch == '.')
 			{
-				// TODO: parse as double
+				return ParseReal(number.substr(i + 1));
 			}
 
 			return TokenType::ERROR;
