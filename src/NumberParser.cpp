@@ -17,7 +17,7 @@ std::string NumberParser::ReadNumber(std::string const& line, size_t& i)
 	std::string result;
 	auto ch = line.at(i);
 
-	while (IsHexDigit(ch) || ch == 'b' || ch == 'x' || ch == '.')
+	while (std::isalnum(ch) || ch == '.')
 	{
 		result += ch;
 		++i;
