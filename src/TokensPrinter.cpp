@@ -28,8 +28,8 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 	{
 	case TokenType::COMMENT:
 		return "COMMENT";
-	case TokenType::SEPARATOR:
-		return "SEPARATOR";
+	case TokenType::TERMINATOR:
+		return "TERMINATOR";
 	case TokenType::ASSIGNMENT:
 		return "ASSIGNMENT";
 	case TokenType::IDENTIFIER:
@@ -78,6 +78,24 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "LESS_OR_EQUAL";
 	case TokenType::GREATER_OR_EQUAL:
 		return "GREATER_OR_EQUAL";
+	case TokenType::INT:
+		return "INT";
+	case TokenType::DOUBLE:
+		return "DOUBLE";
+	case TokenType::BOOL:
+		return "BOOL";
+	case TokenType::CHAR:
+		return "CHAR";
+	case TokenType::STRING:
+		return "STRING";
+	case TokenType::WHILE:
+		return "WHILE";
+	case TokenType::FOR:
+		return "FOR";
+	case TokenType::READ:
+		return "READ";
+	case TokenType::PRINT:
+		return "PRINT";
 	default:
 		return "";
 	}

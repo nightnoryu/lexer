@@ -31,7 +31,7 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.lexeme = "#";
 				break;
 			case ';':
-				token.type = TokenType::SEPARATOR;
+				token.type = TokenType::TERMINATOR;
 				token.lexeme = ";";
 				break;
 

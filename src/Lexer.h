@@ -13,8 +13,17 @@ public:
 
 private:
 	static inline const std::unordered_map<std::string, TokenType> RESERVED_WORDS = {
+		{ "int", TokenType::INT },
+		{ "double", TokenType::DOUBLE },
+		{ "bool", TokenType::BOOL },
+		{ "char", TokenType::CHAR },
+		{ "string", TokenType::STRING },
 		{ "if", TokenType::IF },
 		{ "else", TokenType::ELSE },
+		{ "while", TokenType::WHILE },
+		{ "for", TokenType::FOR },
+		{ "read", TokenType::READ },
+		{ "print", TokenType::PRINT },
 	};
 
 	static std::string ParseStringLiteral(std::string const& line, std::size_t& i);
