@@ -16,7 +16,6 @@ private:
 		{ "int", TokenType::INT },
 		{ "double", TokenType::DOUBLE },
 		{ "bool", TokenType::BOOL },
-		{ "char", TokenType::CHAR },
 		{ "string", TokenType::STRING },
 		{ "if", TokenType::IF },
 		{ "else", TokenType::ELSE },

@@ -28,8 +28,10 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 	{
 	case TokenType::COMMENT:
 		return "COMMENT";
-	case TokenType::TERMINATOR:
-		return "TERMINATOR";
+	case TokenType::COMMA:
+		return "COMMA";
+	case TokenType::SEMICOLON:
+		return "SEMICOLON";
 	case TokenType::ASSIGNMENT:
 		return "ASSIGNMENT";
 	case TokenType::IDENTIFIER:
@@ -84,8 +86,6 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "DOUBLE";
 	case TokenType::BOOL:
 		return "BOOL";
-	case TokenType::CHAR:
-		return "CHAR";
 	case TokenType::STRING:
 		return "STRING";
 	case TokenType::WHILE:

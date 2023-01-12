@@ -6,7 +6,8 @@ enum class TokenType
 {
 	BLANK,
 	COMMENT,
-	TERMINATOR,
+	COMMA,
+	SEMICOLON,
 
 	ASSIGNMENT,
 	IDENTIFIER,
@@ -15,7 +16,6 @@ enum class TokenType
 	INT,
 	DOUBLE,
 	BOOL,
-	CHAR,
 	STRING,
 
 	INTEGER_NUMBER,

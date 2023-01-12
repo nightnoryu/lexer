@@ -30,8 +30,12 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.type = TokenType::COMMENT;
 				token.lexeme = "#";
 				break;
+			case ',':
+				token.type = TokenType::COMMA;
+				token.lexeme = ",";
+				break;
 			case ';':
-				token.type = TokenType::TERMINATOR;
+				token.type = TokenType::SEMICOLON;
 				token.lexeme = ";";
 				break;
 
