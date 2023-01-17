@@ -4,6 +4,9 @@ project(lexer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_library(catch2 INTERFACE)
+target_include_directories(catch2 INTERFACE catch2/)
+
 add_executable(${PROJECT_NAME}
                main.cpp
                src/Args.cpp
@@ -15,3 +18,5 @@ add_executable(${PROJECT_NAME}
                src/TokensPrinter.h
                src/NumberParser.cpp
                src/NumberParser.h)
+
+add_subdirectory(tests)
