@@ -7,7 +7,7 @@
 
 TEST_CASE("end2end cases")
 {
-	std::string const testFile = GENERATE("valid", "numbers");
+	std::string const testFile = GENERATE("valid", "numbers", "invalid-lexemes", "invalid-numbers");
 
 	std::ifstream input("files/" + testFile + ".txt");
 	std::stringstream output;
