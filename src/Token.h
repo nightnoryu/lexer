@@ -8,6 +8,8 @@ enum class TokenType
 	COMMENT,
 	COMMA,
 	SEMICOLON,
+	COLON,
+	DOT,
 
 	ASSIGNMENT,
 	IDENTIFIER,
@@ -17,6 +19,7 @@ enum class TokenType
 	DOUBLE,
 	BOOL,
 	STRING,
+	CONST,
 
 	TRUE,
 	FALSE,
@@ -40,8 +43,15 @@ enum class TokenType
 	ELSE,
 	WHILE,
 	FOR,
+	BREAK,
+	CONTINUE,
 	READ,
 	PRINT,
+
+	CLASS,
+	PUBLIC,
+	PROTECTED,
+	PRIVATE,
 
 	OPENING_PARENTHESIS,
 	CLOSING_PARENTHESIS,

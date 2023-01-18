@@ -17,14 +17,21 @@ private:
 		{ "double", TokenType::DOUBLE },
 		{ "bool", TokenType::BOOL },
 		{ "string", TokenType::STRING },
+		{ "const", TokenType::CONST },
 		{ "true", TokenType::TRUE },
 		{ "false", TokenType::FALSE },
 		{ "if", TokenType::IF },
 		{ "else", TokenType::ELSE },
 		{ "while", TokenType::WHILE },
 		{ "for", TokenType::FOR },
+		{ "break", TokenType::BREAK },
+		{ "continue", TokenType::CONTINUE },
 		{ "read", TokenType::READ },
 		{ "print", TokenType::PRINT },
+		{ "print", TokenType::CLASS },
+		{ "public", TokenType::PUBLIC },
+		{ "protected", TokenType::PROTECTED },
+		{ "private", TokenType::PRIVATE },
 	};
 
 	static std::string ParseStringLiteral(std::string const& line, std::size_t& i);

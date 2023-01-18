@@ -39,6 +39,14 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.type = TokenType::SEMICOLON;
 				token.lexeme = ";";
 				break;
+			case ':':
+				token.type = TokenType::COLON;
+				token.lexeme = ":";
+				break;
+			case '.':
+				token.type = TokenType::DOT;
+				token.lexeme = ".";
+				break;
 
 			case '\'':
 				token.type = TokenType::STRING_LITERAL;

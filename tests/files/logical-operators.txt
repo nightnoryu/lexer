@@ -1,0 +1,10 @@
+a = true;
+b = false;
+
+if (a && b) {
+  print('test')
+}
+
+while (!a && (a || b)) {
+  print('wil not print')
+}

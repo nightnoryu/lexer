@@ -11,7 +11,7 @@ void TokensPrinter::Print(std::ostream& output, std::vector<Token> const& tokens
 
 		if (token.type == TokenType::ERROR)
 		{
-			output << "Error: invalid lexeme (" << token.lexeme << ")";
+			output << "Error: invalid lexeme at";
 		}
 		else
 		{
@@ -32,6 +32,10 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "COMMA";
 	case TokenType::SEMICOLON:
 		return "SEMICOLON";
+	case TokenType::COLON:
+		return "COLON";
+	case TokenType::DOT:
+		return "DOT";
 	case TokenType::ASSIGNMENT:
 		return "ASSIGNMENT";
 	case TokenType::IDENTIFIER:
@@ -94,6 +98,8 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "BOOL";
 	case TokenType::STRING:
 		return "STRING";
+	case TokenType::CONST:
+		return "CONST";
 	case TokenType::TRUE:
 		return "TRUE";
 	case TokenType::FALSE:
@@ -102,10 +108,22 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "WHILE";
 	case TokenType::FOR:
 		return "FOR";
+	case TokenType::BREAK:
+		return "BREAK";
+	case TokenType::CONTINUE:
+		return "CONTINUE";
 	case TokenType::READ:
 		return "READ";
 	case TokenType::PRINT:
 		return "PRINT";
+	case TokenType::CLASS:
+		return "CLASS";
+	case TokenType::PUBLIC:
+		return "PUBLIC";
+	case TokenType::PROTECTED:
+		return "PROTECTED";
+	case TokenType::PRIVATE:
+		return "PRIVATE";
 	default:
 		return "";
 	}

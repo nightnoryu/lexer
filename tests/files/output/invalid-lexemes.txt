@@ -1,18 +1,17 @@
 IDENTIFIER (a1) 1:1
 ASSIGNMENT (=) 1:4
 INTEGER_NUMBER (12) 1:6
-Error: invalid lexeme () 1:8
+Error: invalid lexeme at 1:8
 IF (if) 3:1
 OPENING_PARENTHESIS (() 3:4
 IDENTIFIER (a1) 3:5
-ASSIGNMENT (=) 3:8
-Error: invalid lexeme () 3:9
-INTEGER_NUMBER (12) 3:11
-CLOSING_PARENTHESIS ()) 3:13
-OPENING_BRACE ({) 3:15
+Error: invalid lexeme at 3:8
+INTEGER_NUMBER (12) 3:10
+CLOSING_PARENTHESIS ()) 3:12
+OPENING_BRACE ({) 3:14
 IDENTIFIER (result) 4:3
 ASSIGNMENT (=) 4:10
 IDENTIFIER (a1) 4:12
-Error: invalid lexeme () 4:15
+Error: invalid lexeme at 4:15
 IDENTIFIER (a2) 4:17
 CLOSING_BRACE (}) 5:1

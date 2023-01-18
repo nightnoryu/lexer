@@ -1,0 +1,11 @@
+class CTest
+{
+public:
+  int GetInt();
+
+protected:
+  int GetIntButInChildren();
+
+private:
+  bool m_isCool = true;
+};
