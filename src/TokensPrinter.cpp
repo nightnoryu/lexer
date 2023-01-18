@@ -56,6 +56,12 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "MULTIPLICATION";
 	case TokenType::DIVISION:
 		return "DIVISION";
+	case TokenType::LOGICAL_AND:
+		return "LOGICAL_AND";
+	case TokenType::LOGICAL_OR:
+		return "LOGICAL_OR";
+	case TokenType::LOGICAL_NOT:
+		return "LOGICAL_NOT";
 	case TokenType::IF:
 		return "IF";
 	case TokenType::ELSE:
@@ -88,6 +94,10 @@ std::string TokensPrinter::TokenTypeToString(TokenType type)
 		return "BOOL";
 	case TokenType::STRING:
 		return "STRING";
+	case TokenType::TRUE:
+		return "TRUE";
+	case TokenType::FALSE:
+		return "FALSE";
 	case TokenType::WHILE:
 		return "WHILE";
 	case TokenType::FOR:

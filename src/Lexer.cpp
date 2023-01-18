@@ -62,6 +62,31 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				token.lexeme = "+";
 				break;
 
+			case '&':
+				if (nextChar == '&')
+				{
+					token.type = TokenType::LOGICAL_AND;
+					token.lexeme = "&&";
+					++i;
+				}
+				else
+				{
+					token.type = TokenType::ERROR;
+				}
+				break;
+			case '|':
+				if (nextChar == '|')
+				{
+					token.type = TokenType::LOGICAL_OR;
+					token.lexeme = "||";
+					++i;
+				}
+				else
+				{
+					token.type = TokenType::ERROR;
+				}
+				break;
+
 			case '(':
 				token.type = TokenType::OPENING_PARENTHESIS;
 				token.lexeme = "(";
@@ -102,7 +127,8 @@ std::vector<Token> Lexer::Parse(std::istream& input)
 				}
 				else
 				{
-					token.type = TokenType::ERROR;
+					token.type = TokenType::LOGICAL_NOT;
+					token.lexeme = "!";
 				}
 				break;
 

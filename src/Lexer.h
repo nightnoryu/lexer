@@ -17,6 +17,8 @@ private:
 		{ "double", TokenType::DOUBLE },
 		{ "bool", TokenType::BOOL },
 		{ "string", TokenType::STRING },
+		{ "true", TokenType::TRUE },
+		{ "false", TokenType::FALSE },
 		{ "if", TokenType::IF },
 		{ "else", TokenType::ELSE },
 		{ "while", TokenType::WHILE },
